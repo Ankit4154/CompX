@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/spring-context.xsd">
 
-	<bean id="ryzenProc" class="com.compx.RyzenProcessor">
+	<bean id="selectedProc" class="com.compx.IntelProcessor">
 
 	</bean>
 

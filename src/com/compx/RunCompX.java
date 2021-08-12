@@ -9,7 +9,7 @@ public class RunCompX {
 		// load spring configuration file
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		// retrieve bean from spring container
-		Processor proc = context.getBean("ryzenProc", Processor.class);
+		Processor proc = context.getBean("selectedProc", Processor.class);
 		// call methods on bean
 		System.out.println(proc.getProcessorName());
 		// close context
