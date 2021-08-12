@@ -8,8 +8,13 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/spring-context.xsd">
 
+	<!-- Define dependency -->
+	<bean id="supportedGames" class="com.compx.GameService">
+		
+	</bean>
 	<bean id="selectedProc" class="com.compx.IntelProcessor">
-
+		<!-- Constructor injection -->
+		<constructor-arg ref="supportedGames"></constructor-arg>
 	</bean>
 
 

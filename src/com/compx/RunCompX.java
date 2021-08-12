@@ -12,6 +12,7 @@ public class RunCompX {
 		Processor proc = context.getBean("selectedProc", Processor.class);
 		// call methods on bean
 		System.out.println(proc.getProcessorName());
+		System.out.println(proc.getSupportedMotherboard());
 		// close context
 		context.close();
 	}
