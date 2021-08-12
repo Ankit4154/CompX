@@ -1,2 +1,2 @@
 # CompX
-All about Processors, Motherboards & RAMs
+A spring application for all about Processors, Motherboards & RAMs
