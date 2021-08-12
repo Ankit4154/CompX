@@ -8,14 +8,20 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/spring-context.xsd">
 
+	<!-- If a Bean is defined here an object of the class gets initialized
+		always as soon as context configurations are loaded.
+		This happens irrespective of whether the bean is defined or used
+		in the calling class.
+	 -->
 	<!-- Define dependency -->
 	<bean id="supportedGames" class="com.compx.GameService">
-		
 	</bean>
-	<bean id="selectedProc" class="com.compx.IntelProcessor">
+	<bean id="selectedProcessor" class="com.compx.IntelProcessor">
 		<!-- Constructor injection -->
 		<constructor-arg ref="supportedGames"></constructor-arg>
 	</bean>
-
-
+	<bean id="ryzenProc" class="com.compx.RyzenProcessor">
+		  <!-- Setter injection --> 
+		<property name="gameService" ref="supportedGames"></property>
+	</bean>
 </beans>
