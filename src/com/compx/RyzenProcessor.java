@@ -7,12 +7,12 @@ public class RyzenProcessor implements Processor {
 
 	// no-arg constructor for setter injection
 	public RyzenProcessor() {
-		System.out.println("No arg constructor "+this);
+		System.out.println("No arg constructor " + this);
 	}
 
 	// setter method
 	public void setGameService(GameService gameService) {
-		System.out.println("setter method "+gameService);
+		System.out.println("setter method " + gameService);
 		this.gameService = gameService;
 	}
 
