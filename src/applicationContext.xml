@@ -16,14 +16,21 @@
 	</bean>
 	<bean id="selectedProcessor" class="com.compx.IntelProcessor">
 		<!-- Constructor injection -->
-		<constructor-arg ref="supportedGames"></constructor-arg>
-		<property name="name" value="Intel Processor"></property>
+		<constructor-arg ref="supportedGames" />
+		<property name="name" value="Intel Processor" />
 	</bean>
 	<bean id="ryzenProc" class="com.compx.RyzenProcessor" init-method="myInit" destroy-method="myDestroy">
 		<!-- Setter injection -->
-		<property name="gameService" ref="supportedGames"></property>
-		<property name="name" value="Ryzen Processor"></property>
+		<property name="gameService" ref="supportedGames" />
+		<property name="name" value="Ryzen Processor" />
 	</bean>
-	<bean class="com.compx.DisplayNameBeanPostProcessor"></bean>
-	<bean class="com.compx.MyBeanFactoryPostProcessor"></bean>
+	<bean id="intelProc" class="com.compx.IntelProcessor">
+		<!-- Retrieve values from property file via Property Configure -->
+		<property name="name" value="${intel.processor.name}" />
+	</bean>
+	<bean class="com.compx.DisplayNameBeanPostProcessor" />
+	<bean class="com.compx.MyBeanFactoryPostProcessor" />
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="processorvalues.properties" />
+	</bean>
 </beans>
