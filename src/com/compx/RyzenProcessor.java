@@ -1,6 +1,9 @@
 package com.compx;
 
-public class RyzenProcessor implements Processor {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class RyzenProcessor implements Processor, InitializingBean, DisposableBean {
 
 	// private field for the dependency
 	private GameService gameService;
@@ -31,5 +34,22 @@ public class RyzenProcessor implements Processor {
 		// Use Game service to get supported names
 		return gameService.getSupportedGames();
 	}
+	
+	public void myInit() {
+		System.out.println("My Init method for bean");
+	}
+	
+	public void myDestroy() {
+		System.out.println("My Destroy method for bean");
+	}
 
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("Init method from InitializingBean");
+	}
+
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("Destroy method from DisposableBean");
+	}
 }

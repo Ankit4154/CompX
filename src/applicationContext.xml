@@ -18,7 +18,7 @@
 		<!-- Constructor injection -->
 		<constructor-arg ref="supportedGames"></constructor-arg>
 	</bean>
-	<bean id="ryzenProc" class="com.compx.RyzenProcessor">
+	<bean id="ryzenProc" class="com.compx.RyzenProcessor" init-method="myInit" destroy-method="myDestroy">
 		<!-- Setter injection -->
 		<property name="gameService" ref="supportedGames"></property>
 	</bean>
