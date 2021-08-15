@@ -4,6 +4,7 @@ public class IntelProcessor implements Processor {
 
 	// private field for the dependency
 	private GameService gameSer;
+	private String name;
 
 	// constructor for dependency injection
 	public IntelProcessor(GameService gameSerRef) {
@@ -18,6 +19,14 @@ public class IntelProcessor implements Processor {
 	@Override
 	public String getSupportedMotherboard() {
 		return gameSer.getSupportedGames();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

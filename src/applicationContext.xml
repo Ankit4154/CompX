@@ -17,10 +17,13 @@
 	<bean id="selectedProcessor" class="com.compx.IntelProcessor">
 		<!-- Constructor injection -->
 		<constructor-arg ref="supportedGames"></constructor-arg>
+		<property name="name" value="Intel Processor"></property>
 	</bean>
 	<bean id="ryzenProc" class="com.compx.RyzenProcessor" init-method="myInit" destroy-method="myDestroy">
 		<!-- Setter injection -->
 		<property name="gameService" ref="supportedGames"></property>
+		<property name="name" value="Ryzen Processor"></property>
 	</bean>
 	<bean class="com.compx.DisplayNameBeanPostProcessor"></bean>
+	<bean class="com.compx.MyBeanFactoryPostProcessor"></bean>
 </beans>

@@ -7,10 +7,16 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 
 	// private field for the dependency
 	private GameService gameService;
+	private String name;
 
 	// no-arg constructor for setter injection
 	public RyzenProcessor() {
 		System.out.println("No arg constructor " + this);
+	}
+
+	// constructor for dependency injection
+	public RyzenProcessor(GameService gameService) {
+		this.gameService = gameService;
 	}
 
 	// setter method
@@ -19,9 +25,12 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 		this.gameService = gameService;
 	}
 
-	// constructor for dependency injection
-	public RyzenProcessor(GameService gameService) {
-		this.gameService = gameService;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
@@ -34,11 +43,11 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 		// Use Game service to get supported names
 		return gameService.getSupportedGames();
 	}
-	
+
 	public void myInit() {
 		System.out.println("My Init method for bean");
 	}
-	
+
 	public void myDestroy() {
 		System.out.println("My Destroy method for bean");
 	}
@@ -52,4 +61,5 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 	public void destroy() throws Exception {
 		System.out.println("Destroy method from DisposableBean");
 	}
+
 }

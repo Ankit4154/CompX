@@ -25,6 +25,10 @@ public class RunCompX {
 		// testing setter injection
 		System.out.println(ryzenProc.getProcessorName());
 		System.out.println(ryzenProc.getSupportedMotherboard());
+		System.out.println("********* Calling getter *********");
+		// calling getter with initialized value from xml
+		System.out.println(ryzenProc.getName());
+		
 		// for automatic/graceful application context closure when JVM ends
 		context.registerShutdownHook();
 		// close context
