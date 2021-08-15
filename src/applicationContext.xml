@@ -22,4 +22,5 @@
 		<!-- Setter injection -->
 		<property name="gameService" ref="supportedGames"></property>
 	</bean>
+	<bean class="com.compx.DisplayNameBeanPostProcessor"></bean>
 </beans>
