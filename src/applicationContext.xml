@@ -19,7 +19,8 @@
 		<constructor-arg ref="supportedGames" />
 		<property name="name" value="Intel Processor" />
 	</bean>
-	<bean id="ryzenProc" class="com.compx.RyzenProcessor" init-method="myInit" destroy-method="myDestroy">
+	<bean id="ryzenProc" class="com.compx.RyzenProcessor"
+		init-method="myInit" destroy-method="myDestroy">
 		<!-- Setter injection -->
 		<property name="gameService" ref="supportedGames" />
 		<property name="name" value="Ryzen Processor" />
@@ -30,7 +31,8 @@
 	</bean>
 	<bean class="com.compx.DisplayNameBeanPostProcessor" />
 	<bean class="com.compx.MyBeanFactoryPostProcessor" />
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations" value="processorvalues.properties" />
 	</bean>
 </beans>
