@@ -28,19 +28,19 @@ public class RunCompX {
 		System.out.println("********* Calling getter for ryzen *********");
 		// calling getter with initialized value from xml
 		System.out.println(ryzenProc.getName());
-		
-		
+
 		// retrieve IntelProcessor bean
-		// Either cast the context.getBean as below or provide the class name as 2nd parameter as above
-		IntelProcessor intelProc = (IntelProcessor)context.getBean("intelProc");
+		// Either cast the context.getBean as below or provide the class name as 2nd
+		// parameter as above
+		IntelProcessor intelProc = (IntelProcessor) context.getBean("intelProc");
 		System.out.println("********* Calling getter for intel *********");
 		// calling getter with initialized value from properties file
 		System.out.println(intelProc.getName());
-		
+
 		// for automatic/graceful application context closure when JVM ends
 		context.registerShutdownHook();
 		// close context
-		//context.close();
+		// context.close();
 	}
 
 }

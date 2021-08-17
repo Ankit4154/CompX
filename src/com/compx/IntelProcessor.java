@@ -7,9 +7,9 @@ public class IntelProcessor implements Processor {
 	private String name;
 
 	public IntelProcessor() {
-		
+
 	}
-	
+
 	// constructor for dependency injection
 	public IntelProcessor(GameService gameSerRef) {
 		gameSer = gameSerRef;
