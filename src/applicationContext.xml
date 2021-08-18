@@ -12,7 +12,7 @@
 		as soon as context configurations are loaded. This happens irrespective of 
 		whether the bean is defined or used in the calling class. -->
 	<!-- Define dependency -->
-	<bean id="supportedGames" class="com.compx.GameService">
+	<bean id="supportedGames" class="com.compx.GameService" autowire="default">
 	</bean>
 	<bean id="selectedProcessor" class="com.compx.IntelProcessor">
 		<!-- Constructor injection -->
