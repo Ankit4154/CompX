@@ -61,7 +61,10 @@
 
 	<!-- Generic Cache Bean, can be referenced by both/either of Ryzen or IntelProcessor 
 		beans -->
-	<bean id="cache" class="com.compx.Cache">
+	<!-- bean scope marked as prototype (instead of default - singleton) 
+		to let spring container pass new cache objects for each bean call.
+	-->
+	<bean id="cache" class="com.compx.Cache" scope="prototype">
 		<property name="L2Cache" value="2MB" />
 		<property name="L3Cache" value="3MB" />
 	</bean>

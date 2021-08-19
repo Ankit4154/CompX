@@ -29,8 +29,9 @@ public class RunCompX {
 		System.out.println(ryzenProc.getSupportedMotherboard());
 		System.out.println("********* Calling getter for ryzen *********");
 		// calling getter with initialized value from xml
-		System.out.println("Name : "+ryzenProc.getName());
-		System.out.println("L2 Cache : "+ryzenProc.getCache().getL2Cache());
+		System.out.println("Name : " + ryzenProc.getName());
+		System.out.println("L2 Cache : " + ryzenProc.getCache().getL2Cache());
+		System.out.println("Cache object : " + ryzenProc.getCache());
 
 		// retrieve IntelProcessor bean
 		// Either cast the context.getBean as below or provide the class name as 2nd
@@ -38,14 +39,15 @@ public class RunCompX {
 		IntelProcessor intelProc = (IntelProcessor) context.getBean("intelProc");
 		System.out.println("********* Calling getter for intel *********");
 		// calling getter with initialized value from properties file
-		System.out.println("Name : "+intelProc.getName());
-		System.out.println("Frequency : "+intelProc.getFreq());
-		System.out.println("Socket type : "+intelProc.getMotherboard().getSocketType());
-		System.out.println("L2 Cache : "+intelProc.getCache().getL2Cache());
+		System.out.println("Name : " + intelProc.getName());
+		System.out.println("Frequency : " + intelProc.getFreq());
+		System.out.println("Socket type : " + intelProc.getMotherboard().getSocketType());
+		System.out.println("L2 Cache : " + intelProc.getCache().getL2Cache());
+		System.out.println("Cache object : " + intelProc.getCache());
 		System.out.println("List of companies : ");
-		for(String x : intelProc.getMotherboard().getCompanies())
+		for (String x : intelProc.getMotherboard().getCompanies())
 			System.out.println(x);
-		
+
 		// for automatic/graceful application context closure when JVM ends
 		((AbstractApplicationContext) context).registerShutdownHook();
 		// close context
