@@ -15,8 +15,7 @@
 		as soon as context configurations are loaded. This happens irrespective of 
 		whether the bean is defined or used in the calling class. -->
 	<!-- Define dependency -->
-	<bean id="supportedGames" class="com.compx.GameService"
-		autowire="default">
+	<bean id="supportedGames" class="com.compx.GameService">
 	</bean>
 	<bean id="selectedProcessor" class="com.compx.IntelProcessor">
 		<!-- Constructor injection -->
@@ -25,12 +24,13 @@
 		<property name="name" value="Intel Processor from xml" />
 	</bean>
 	<bean id="ryzenProc" class="com.compx.RyzenProcessor"
-		init-method="myInit" destroy-method="myDestroy">
+		init-method="myInit" destroy-method="myDestroy" autowire="byName">
 		<!-- Setter injection -->
 		<property name="gameService" ref="supportedGames" />
 		<property name="name" value="Ryzen Processor from xml" />
 		<!-- Setting reference to Cache bean for getting values -->
-		<property name="cache" ref="cache" />
+		<!-- cache property being autowired as per defined bean name in xml -->
+		<!-- <property name="cache" ref="cache" /> -->
 	</bean>
 	<bean id="intelProc" class="com.compx.IntelProcessor">
 		<!-- Retrieve values from property file via Property Configure -->
