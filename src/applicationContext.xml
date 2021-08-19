@@ -2,11 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/spring-context.xsd">
+        http://www.springframework.org/schema/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<!-- If a Bean is defined here an object of the class gets initialized always 
 		as soon as context configurations are loaded. This happens irrespective of 
@@ -45,6 +48,13 @@
 			<!-- bean id is not mandatorily required to be specified for inner bean -->
 			<bean class="com.compx.IntelMotherboard">
 				<property name="socketType" value="LGA 1151 Socket type" />
+				<property name="companies">
+					<util:list>
+						<value>Gigabyte</value>
+						<value>Asus</value>
+						<value>MSI</value>
+					</util:list>
+				</property>
 			</bean>
 		</property>
 	</bean>

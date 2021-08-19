@@ -42,6 +42,9 @@ public class RunCompX {
 		System.out.println("Frequency : "+intelProc.getFreq());
 		System.out.println("Socket type : "+intelProc.getMotherboard().getSocketType());
 		System.out.println("L2 Cache : "+intelProc.getCache().getL2Cache());
+		System.out.println("List of companies : ");
+		for(String x : intelProc.getMotherboard().getCompanies())
+			System.out.println(x);
 		
 		// for automatic/graceful application context closure when JVM ends
 		((AbstractApplicationContext) context).registerShutdownHook();
