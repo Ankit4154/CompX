@@ -7,6 +7,7 @@ public class IntelProcessor implements Processor {
 	private String name;
 	private double freq;
 	private IntelMotherboard motherboard;
+	private Cache cache;
 
 	public IntelProcessor() {
 
@@ -16,15 +17,15 @@ public class IntelProcessor implements Processor {
 	public IntelProcessor(GameService gameSer) {
 		this.gameSer = gameSer;
 	}
-	
+
 	public IntelProcessor(String name) {
 		this.name = name;
 	}
-	
+
 	public IntelProcessor(double freq) {
 		this.freq = freq;
 	}
-	
+
 	public IntelProcessor(String name, double freq) {
 		System.out.println("********* Intel values init by constructor *********");
 		this.name = name;
@@ -49,7 +50,7 @@ public class IntelProcessor implements Processor {
 		System.out.println("********* Intel Name init by setter *********");
 		this.name = name;
 	}
-	
+
 	public double getFreq() {
 		return freq;
 	}
@@ -65,6 +66,14 @@ public class IntelProcessor implements Processor {
 
 	public void setMotherboard(IntelMotherboard motherboard) {
 		this.motherboard = motherboard;
+	}
+
+	public Cache getCache() {
+		return cache;
+	}
+
+	public void setCache(Cache cache) {
+		this.cache = cache;
 	}
 
 }

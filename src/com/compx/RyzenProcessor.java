@@ -8,6 +8,7 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 	// private field for the dependency
 	private GameService gameService;
 	private String name;
+	private Cache cache;
 
 	// no-arg constructor for setter injection
 	public RyzenProcessor() {
@@ -62,6 +63,14 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 	@Override
 	public void destroy() throws Exception {
 		System.out.println("Destroy method from DisposableBean");
+	}
+
+	public Cache getCache() {
+		return cache;
+	}
+
+	public void setCache(Cache cache) {
+		this.cache = cache;
 	}
 
 }

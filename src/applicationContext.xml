@@ -12,7 +12,8 @@
 		as soon as context configurations are loaded. This happens irrespective of 
 		whether the bean is defined or used in the calling class. -->
 	<!-- Define dependency -->
-	<bean id="supportedGames" class="com.compx.GameService" autowire="default">
+	<bean id="supportedGames" class="com.compx.GameService"
+		autowire="default">
 	</bean>
 	<bean id="selectedProcessor" class="com.compx.IntelProcessor">
 		<!-- Constructor injection -->
@@ -25,22 +26,36 @@
 		<!-- Setter injection -->
 		<property name="gameService" ref="supportedGames" />
 		<property name="name" value="Ryzen Processor from xml" />
+		<!-- Setting reference to Cache bean for getting values -->
+		<property name="cache" ref="cache" />
 	</bean>
 	<bean id="intelProc" class="com.compx.IntelProcessor">
 		<!-- Retrieve values from property file via Property Configure -->
 		<!-- Setter injection is always called after constructor injection -->
 		<property name="name" value="Intel proc from xml" />
 		<!-- Constructor injection is called before setter injection -->
-		<constructor-arg name="name" type="java.lang.String" value="${intel.processor.name}" />
+		<constructor-arg name="name" type="java.lang.String"
+			value="${intel.processor.name}" />
 		<constructor-arg name="freq" type="double" value="4.3" />
-		<!-- Setting reference to IntelMotherboard bean for getting values -->
-		<property name="motherboard" ref="intelMotherboard" />
+		<!-- Setting reference to Cache bean for getting values -->
+		<property name="cache" ref="cache" />
+		<!-- Initializing motherboard property via inner bean -->
+		<property name="motherboard">
+			<!-- Inner bean specific to only IntelProcessor bean -->
+			<!-- bean id is not mandatorily required to be specified for inner bean -->
+			<bean class="com.compx.IntelMotherboard">
+				<property name="socketType" value="LGA 1151 Socket type" />
+			</bean>
+		</property>
 	</bean>
-	
-	<bean id="intelMotherboard" class="com.compx.IntelMotherboard">
-		<property name="socketType" value="LGA 1151 Socket type" />
+
+	<!-- Generic Cache Bean, can be referenced by both/either of Ryzen or IntelProcessor 
+		beans -->
+	<bean id="cache" class="com.compx.Cache">
+		<property name="L2Cache" value="2MB" />
+		<property name="L3Cache" value="3MB" />
 	</bean>
-	
+
 	<bean class="com.compx.DisplayNameBeanPostProcessor" />
 	<bean class="com.compx.MyBeanFactoryPostProcessor" />
 	<bean
