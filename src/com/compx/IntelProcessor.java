@@ -5,14 +5,30 @@ public class IntelProcessor implements Processor {
 	// private field for the dependency
 	private GameService gameSer;
 	private String name;
+	private double freq;
+	private IntelMotherboard motherboard;
 
 	public IntelProcessor() {
 
 	}
 
 	// constructor for dependency injection
-	public IntelProcessor(GameService gameSerRef) {
-		gameSer = gameSerRef;
+	public IntelProcessor(GameService gameSer) {
+		this.gameSer = gameSer;
+	}
+	
+	public IntelProcessor(String name) {
+		this.name = name;
+	}
+	
+	public IntelProcessor(double freq) {
+		this.freq = freq;
+	}
+	
+	public IntelProcessor(String name, double freq) {
+		System.out.println("********* Intel values init by constructor *********");
+		this.name = name;
+		this.freq = freq;
 	}
 
 	@Override
@@ -30,7 +46,25 @@ public class IntelProcessor implements Processor {
 	}
 
 	public void setName(String name) {
+		System.out.println("********* Intel Name init by setter *********");
 		this.name = name;
+	}
+	
+	public double getFreq() {
+		return freq;
+	}
+
+	public void setFreq(double freq) {
+		System.out.println("********* Intel Frequency init by setter *********");
+		this.freq = freq;
+	}
+
+	public IntelMotherboard getMotherboard() {
+		return motherboard;
+	}
+
+	public void setMotherboard(IntelMotherboard motherboard) {
+		this.motherboard = motherboard;
 	}
 
 }

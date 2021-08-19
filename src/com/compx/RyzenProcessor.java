@@ -44,10 +44,12 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 		return gameService.getSupportedGames();
 	}
 
+	// same as destroy from InitializingBean interface
 	public void myInit() {
 		System.out.println("My Init method for bean");
 	}
 
+	// same as destroy from DisposableBean interface
 	public void myDestroy() {
 		System.out.println("My Destroy method for bean");
 	}

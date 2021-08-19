@@ -1,5 +1,7 @@
 package com.compx;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class RunCompX {
@@ -7,7 +9,7 @@ public class RunCompX {
 	public static void main(String[] args) {
 
 		// load spring configuration file
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		/*
 		 * Objects of all the defined beans in applicationContext.xml gets initialized
 		 * irrespective of the fact whether they are called further in this class or
@@ -36,9 +38,11 @@ public class RunCompX {
 		System.out.println("********* Calling getter for intel *********");
 		// calling getter with initialized value from properties file
 		System.out.println(intelProc.getName());
-
+		System.out.println(intelProc.getFreq());
+		System.out.println(intelProc.getMotherboard().getSocketType());
+		
 		// for automatic/graceful application context closure when JVM ends
-		context.registerShutdownHook();
+		((AbstractApplicationContext) context).registerShutdownHook();
 		// close context
 		// context.close();
 	}

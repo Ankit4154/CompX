@@ -17,18 +17,30 @@
 	<bean id="selectedProcessor" class="com.compx.IntelProcessor">
 		<!-- Constructor injection -->
 		<constructor-arg ref="supportedGames" />
-		<property name="name" value="Intel Processor" />
+		<!-- Setter injection -->
+		<property name="name" value="Intel Processor from xml" />
 	</bean>
 	<bean id="ryzenProc" class="com.compx.RyzenProcessor"
 		init-method="myInit" destroy-method="myDestroy">
 		<!-- Setter injection -->
 		<property name="gameService" ref="supportedGames" />
-		<property name="name" value="Ryzen Processor" />
+		<property name="name" value="Ryzen Processor from xml" />
 	</bean>
 	<bean id="intelProc" class="com.compx.IntelProcessor">
 		<!-- Retrieve values from property file via Property Configure -->
-		<property name="name" value="${intel.processor.name}" />
+		<!-- Setter injection is always called after constructor injection -->
+		<property name="name" value="Intel proc from xml" />
+		<!-- Constructor injection is called before setter injection -->
+		<constructor-arg name="name" type="java.lang.String" value="${intel.processor.name}" />
+		<constructor-arg name="freq" type="double" value="4.3" />
+		<!-- Setting reference to IntelMotherboard bean for getting values -->
+		<property name="motherboard" ref="intelMotherboard" />
 	</bean>
+	
+	<bean id="intelMotherboard" class="com.compx.IntelMotherboard">
+		<property name="socketType" value="LGA 1151 Socket type" />
+	</bean>
+	
 	<bean class="com.compx.DisplayNameBeanPostProcessor" />
 	<bean class="com.compx.MyBeanFactoryPostProcessor" />
 	<bean
