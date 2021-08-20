@@ -1,5 +1,7 @@
 package com.compx;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class IntelProcessor implements Processor {
 
 	// private field for the dependency
@@ -71,7 +73,7 @@ public class IntelProcessor implements Processor {
 	public Cache getCache() {
 		return cache;
 	}
-
+	@Autowired
 	public void setCache(Cache cache) {
 		this.cache = cache;
 	}

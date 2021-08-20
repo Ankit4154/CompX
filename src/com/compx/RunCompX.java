@@ -47,7 +47,13 @@ public class RunCompX {
 		System.out.println("List of companies : ");
 		for (String x : intelProc.getMotherboard().getCompanies())
 			System.out.println(x);
-
+		
+		
+		IntelProcessor intelProc2 = (IntelProcessor) context.getBean("intelProc2");
+		System.out.println("Name : " + intelProc2.getName());
+		System.out.println("Frequency : " + intelProc2.getFreq());
+		System.out.println("L2 Cache : " + intelProc2.getCache().getL2Cache());
+		System.out.println("Cache object : " + intelProc2.getCache());
 		// for automatic/graceful application context closure when JVM ends
 		((AbstractApplicationContext) context).registerShutdownHook();
 		// close context
