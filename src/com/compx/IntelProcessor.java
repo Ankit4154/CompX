@@ -73,6 +73,7 @@ public class IntelProcessor implements Processor {
 	public Cache getCache() {
 		return cache;
 	}
+
 	@Autowired
 	public void setCache(Cache cache) {
 		this.cache = cache;

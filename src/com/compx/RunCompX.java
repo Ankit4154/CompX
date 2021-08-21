@@ -47,8 +47,7 @@ public class RunCompX {
 		System.out.println("List of companies : ");
 		for (String x : intelProc.getMotherboard().getCompanies())
 			System.out.println(x);
-		
-		
+
 		IntelProcessor intelProc2 = (IntelProcessor) context.getBean("intelProc2");
 		System.out.println("Name : " + intelProc2.getName());
 		System.out.println("Frequency : " + intelProc2.getFreq());

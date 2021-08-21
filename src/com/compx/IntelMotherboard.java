@@ -36,8 +36,8 @@ public class IntelMotherboard implements Motherboard, ApplicationContextAware, B
 
 	@Override
 	public void setBeanName(String name) {
-		System.out.println("Bean Name : "+ name);
-		
+		System.out.println("Bean Name : " + name);
+
 	}
 
 	@Override
