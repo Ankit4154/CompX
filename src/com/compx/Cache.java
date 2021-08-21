@@ -2,15 +2,15 @@ package com.compx;
 
 public class Cache {
 
-	private String L2Cache;
+	private String l2Cache;
 	private String L3Cache;
 
 	public String getL2Cache() {
-		return L2Cache;
+		return l2Cache;
 	}
 
 	public void setL2Cache(String l2Cache) {
-		L2Cache = l2Cache;
+		this.l2Cache = l2Cache;
 	}
 
 	public String getL3Cache() {

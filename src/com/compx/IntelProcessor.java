@@ -1,6 +1,9 @@
 package com.compx;
 
+import javax.annotation.Resource;
+import javax.annotation.processing.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ImportResource;
 
 public class IntelProcessor implements Processor {
 

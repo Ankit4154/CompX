@@ -1,6 +1,5 @@
 package com.compx;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -9,7 +8,7 @@ public class RunCompX {
 	public static void main(String[] args) {
 
 		// load spring configuration file
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		/*
 		 * Objects of all the defined beans in applicationContext.xml gets initialized
 		 * irrespective of the fact whether they are called further in this class or
@@ -54,7 +53,7 @@ public class RunCompX {
 		System.out.println("L2 Cache : " + intelProc2.getCache().getL2Cache());
 		System.out.println("Cache object : " + intelProc2.getCache());
 		// for automatic/graceful application context closure when JVM ends
-		((AbstractApplicationContext) context).registerShutdownHook();
+		context.registerShutdownHook();
 		// close context
 		// context.close();
 	}
