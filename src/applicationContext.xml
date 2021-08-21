@@ -14,8 +14,8 @@
 		as soon as context configurations are loaded. This happens irrespective of 
 		whether the bean is defined or used in the calling class. -->
 	<!-- Define dependency -->
-	<!-- Commented GameService bean creation as automatic created 
-	via Components annotation -->
+	<!-- Commented GameService bean creation as automatic created via Components 
+		annotation -->
 	<!-- <bean id="supportedGames" class="com.compx.GameService" /> -->
 	<bean id="selectedProcessor" class="com.compx.IntelProcessor">
 		<!-- Constructor injection -->
@@ -29,7 +29,7 @@
 	<bean id="ryzenProc" class="com.compx.RyzenProcessor"
 		init-method="myInit" destroy-method="myDestroy" autowire="byName">
 		<!-- Setter injection -->
-		<!-- <property name="gameService" ref="supportedGames" />  -->
+		<!-- <property name="gameService" ref="supportedGames" /> -->
 		<property name="name" value="Ryzen Processor from xml" />
 		<!-- Setting reference to Cache bean for getting values -->
 		<!-- cache property being autowired as per defined bean name in xml -->
@@ -84,12 +84,22 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations" value="processorvalues.properties" />
 	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<util:list>
+				<value>messages</value>
+			</util:list>
+		</property>
+	</bean>
 	<!-- Bean autowired via annotation on setter method -->
 	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" 
 		/> -->
 	<!-- Automatically adding all required annotation post processors -->
 	<context:annotation-config />
-	<!-- Scans all class inside base package and creates automatic beans of
-		 classes defined with stereotype(Component, Service, Repository, Controller) annotations -->
+	<!-- Scans all class inside base package and creates automatic beans of 
+		classes defined with stereotype(Component, Service, Repository, Controller) 
+		annotations -->
 	<context:component-scan base-package="com.compx" />
 </beans>
