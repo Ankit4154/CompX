@@ -90,6 +90,6 @@
 	<!-- Automatically adding all required annotation post processors -->
 	<context:annotation-config />
 	<!-- Scans all class inside base package and creates automatic beans of
-		 classes defined with @Component annotations -->
+		 classes defined with stereotype(Component, Service, Repository, Controller) annotations -->
 	<context:component-scan base-package="com.compx" />
 </beans>
