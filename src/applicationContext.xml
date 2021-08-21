@@ -14,18 +14,22 @@
 		as soon as context configurations are loaded. This happens irrespective of 
 		whether the bean is defined or used in the calling class. -->
 	<!-- Define dependency -->
-	<bean id="supportedGames" class="com.compx.GameService">
-	</bean>
+	<!-- Commented GameService bean creation as automatic created 
+	via Components annotation -->
+	<!-- <bean id="supportedGames" class="com.compx.GameService" /> -->
 	<bean id="selectedProcessor" class="com.compx.IntelProcessor">
 		<!-- Constructor injection -->
-		<constructor-arg ref="supportedGames" />
+		<!-- Commented old reference for constructor bean reference from xml -->
+		<!-- <constructor-arg ref="supportedGames" /> -->
+		<!-- New reference after Component annotation and autowiring -->
+		<constructor-arg ref="gameService" />
 		<!-- Setter injection -->
 		<property name="name" value="Intel Processor from xml" />
 	</bean>
 	<bean id="ryzenProc" class="com.compx.RyzenProcessor"
 		init-method="myInit" destroy-method="myDestroy" autowire="byName">
 		<!-- Setter injection -->
-		<property name="gameService" ref="supportedGames" />
+		<!-- <property name="gameService" ref="supportedGames" />  -->
 		<property name="name" value="Ryzen Processor from xml" />
 		<!-- Setting reference to Cache bean for getting values -->
 		<!-- cache property being autowired as per defined bean name in xml -->
@@ -44,7 +48,7 @@
 		<!-- Initializing motherboard property via inner bean -->
 		<property name="motherboard">
 			<!-- Inner bean specific to only IntelProcessor bean -->
-			<!-- bean id is not mandatorily required to be specified for inner bean -->
+			<!-- bean id is not mandatory requirement to be specified for inner bean -->
 			<bean class="com.compx.IntelMotherboard">
 				<property name="socketType" value="LGA 1151 Socket type" />
 				<property name="companies">
@@ -70,6 +74,8 @@
 	<!-- Cache bean autowired via annotations -->
 	<bean id="intelProc2" class="com.compx.IntelProcessor">
 		<!-- Cache bean autowired via annotations -->
+		<!-- Setter injection -->
+		<property name="name" value="Intel Processor2 from xml" />
 	</bean>
 
 	<bean class="com.compx.DisplayNameBeanPostProcessor" />
@@ -83,4 +89,7 @@
 		/> -->
 	<!-- Automatically adding all required annotation post processors -->
 	<context:annotation-config />
+	<!-- Scans all class inside base package and creates automatic beans of
+		 classes defined with @Component annotations -->
+	<context:component-scan base-package="com.compx" />
 </beans>

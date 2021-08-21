@@ -16,17 +16,18 @@ public class RunCompX {
 		 */
 		// retrieve bean from spring container
 		Processor proc = context.getBean("selectedProcessor", Processor.class);
+
+		System.out.println("********* Calling getter for selected processor bean *********");
 		// call methods on bean
-		System.out.println(proc.getProcessorName());
+		System.out.println("Processor name : " + proc.getProcessorName());
 		// testing constructor injection
 		System.out.println(proc.getSupportedMotherboard());
 
 		// retrieve RyzenProcessor bean
 		RyzenProcessor ryzenProc = context.getBean("ryzenProc", RyzenProcessor.class);
-		// testing setter injection
+		System.out.println("********* Calling getter for ryzen 1 *********");
 		System.out.println(ryzenProc.getProcessorName());
 		System.out.println(ryzenProc.getSupportedMotherboard());
-		System.out.println("********* Calling getter for ryzen *********");
 		// calling getter with initialized value from xml
 		System.out.println("Name : " + ryzenProc.getName());
 		System.out.println("L2 Cache : " + ryzenProc.getCache().getL2Cache());
@@ -36,7 +37,7 @@ public class RunCompX {
 		// Either cast the context.getBean as below or provide the class name as 2nd
 		// parameter as above
 		IntelProcessor intelProc = (IntelProcessor) context.getBean("intelProc");
-		System.out.println("********* Calling getter for intel *********");
+		System.out.println("********* Calling getter for intel 1 *********");
 		// calling getter with initialized value from properties file
 		System.out.println("Name : " + intelProc.getName());
 		System.out.println("Frequency : " + intelProc.getFreq());
@@ -47,11 +48,12 @@ public class RunCompX {
 		for (String x : intelProc.getMotherboard().getCompanies())
 			System.out.println(x);
 
-		IntelProcessor intelProc2 = (IntelProcessor) context.getBean("intelProc2");
-		System.out.println("Name : " + intelProc2.getName());
-		System.out.println("Frequency : " + intelProc2.getFreq());
-		System.out.println("L2 Cache : " + intelProc2.getCache().getL2Cache());
-		System.out.println("Cache object : " + intelProc2.getCache());
+		intelProc = (IntelProcessor) context.getBean("intelProc2");
+		System.out.println("********* Calling getter for intel 2 *********");
+		System.out.println("Name : " + intelProc.getName());
+		System.out.println("Frequency : " + intelProc.getFreq());
+		System.out.println("L2 Cache : " + intelProc.getCache().getL2Cache());
+		System.out.println("Cache object : " + intelProc.getCache());
 		// for automatic/graceful application context closure when JVM ends
 		context.registerShutdownHook();
 		// close context

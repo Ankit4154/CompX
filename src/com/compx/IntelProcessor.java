@@ -1,14 +1,11 @@
 package com.compx;
 
-import javax.annotation.Resource;
-import javax.annotation.processing.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ImportResource;
 
 public class IntelProcessor implements Processor {
 
 	// private field for the dependency
-	private GameService gameSer;
+	private GameService gameService;
 	private String name;
 	private double freq;
 	private IntelMotherboard motherboard;
@@ -20,7 +17,7 @@ public class IntelProcessor implements Processor {
 
 	// constructor for dependency injection
 	public IntelProcessor(GameService gameSer) {
-		this.gameSer = gameSer;
+		this.gameService = gameSer;
 	}
 
 	public IntelProcessor(String name) {
@@ -44,7 +41,7 @@ public class IntelProcessor implements Processor {
 
 	@Override
 	public String getSupportedMotherboard() {
-		return gameSer.getSupportedGames();
+		return gameService.getSupportedGames();
 	}
 
 	public String getName() {
