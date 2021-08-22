@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 
 public class RyzenProcessor implements Processor, InitializingBean, DisposableBean {
 
@@ -13,6 +15,10 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 	private GameService gameService;
 	private String name;
 	private Cache cache;
+	
+	// dependency injection by type
+	@Autowired
+	private MessageSource messageSource;
 
 	// no-arg constructor for setter injection
 	public RyzenProcessor() {
@@ -40,7 +46,7 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 
 	@Override
 	public String getProcessorName() {
-		return "Ryzen 3 3200g";
+		return this.messageSource.getMessage("ryzen.processor", null, "Default Ryzen 3 3200g", null);
 	}
 
 	@Override
@@ -58,7 +64,7 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 	public void myDestroy() {
 		System.out.println("My Destroy method for bean");
 	}
-	
+
 	// same as Post processor, from JSR-250 annotations
 	@PostConstruct
 	public void myInit2() {
@@ -84,11 +90,19 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 	public Cache getCache() {
 		return cache;
 	}
-	
+
 	// Resource annotation from JSR-250 annotations
-	@Resource(name="cache")
+	@Resource(name = "cache")
 	public void setCache(Cache cache) {
 		this.cache = cache;
+	}
+
+	public MessageSource getMessageSource() {
+		return messageSource;
+	}
+
+	public void setMessageSource(MessageSource messageSource) {
+		this.messageSource = messageSource;
 	}
 
 }
