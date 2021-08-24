@@ -15,7 +15,7 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 	private GameService gameService;
 	private String name;
 	private Cache cache;
-	
+
 	// dependency injection by type
 	@Autowired
 	private MessageSource messageSource;
