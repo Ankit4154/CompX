@@ -7,14 +7,17 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.context.MessageSource;
 
-public class RyzenProcessor implements Processor, InitializingBean, DisposableBean {
+public class RyzenProcessor implements Processor, InitializingBean, DisposableBean, ApplicationEventPublisherAware {
 
 	// private field for the dependency
 	private GameService gameService;
 	private String name;
 	private Cache cache;
+	private ApplicationEventPublisher publisher;
 
 	// dependency injection by type
 	@Autowired
@@ -46,6 +49,8 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 
 	@Override
 	public String getProcessorName() {
+		MyEvent event = new MyEvent(this);
+		publisher.publishEvent(event);
 		return this.messageSource.getMessage("ryzen.processor", null, "Default Ryzen 3 3200g", null);
 	}
 
@@ -103,6 +108,11 @@ public class RyzenProcessor implements Processor, InitializingBean, DisposableBe
 
 	public void setMessageSource(MessageSource messageSource) {
 		this.messageSource = messageSource;
+	}
+
+	@Override
+	public void setApplicationEventPublisher(ApplicationEventPublisher publisher) {
+		this.publisher = publisher;		
 	}
 
 }
