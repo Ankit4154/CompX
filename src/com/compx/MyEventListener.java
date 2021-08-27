@@ -9,7 +9,7 @@ public class MyEventListener implements ApplicationListener {
 
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
-		System.out.println("\n\n"+event.toString()+"\n\n");
+		System.out.println("\n\n" + event.toString() + "\n\n");
 	}
 
 }
