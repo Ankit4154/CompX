@@ -7,7 +7,7 @@ public class DisplayNameBeanPostProcessor implements BeanPostProcessor {
 
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		System.out.println("In before initialization method, Bean name " + beanName);
+		System.out.println("In before initialization method Bean name " + beanName);
 		return bean;
 	}
 
