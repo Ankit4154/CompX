@@ -1,5 +1,6 @@
 package com.compx.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -31,7 +32,8 @@ public class LoggingAspect {
 	}
 	
 	@After("allCacheMethods()")
-	public void loggingAdviceForAllMethods() {
+	public void loggingAdviceForAllMethods(JoinPoint joinPoint) {
+		System.out.println("JoinPoint : "+joinPoint.toString());
 		System.out.println("using All method pointcut");
 	}
 	// Using pointcut for same expression to be applied over different execution methods
