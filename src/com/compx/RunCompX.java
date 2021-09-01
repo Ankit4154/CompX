@@ -53,6 +53,9 @@ public class RunCompX {
 		System.out.println("Name : " + intelProc.getName());
 		System.out.println("Frequency : " + intelProc.getFreq());
 		System.out.println("L2 Cache : " + intelProc.getCache().getL2Cache());
+		System.out.println("L3 Cache : " + intelProc.getCache().getL3Cache());
+		intelProc.getCache().setL2Cache("Changed L2 Cache : 6MB");
+		intelProc.getCache().setL3Cache("Changed L3 Cache : 10MB");
 		System.out.println("Cache object : " + intelProc.getCache());
 		System.out.println("********* Getting welcome message for working *********");
 		System.out.println(context.getMessage("working", null, "Default working note", null));
