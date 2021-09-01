@@ -29,8 +29,17 @@ public class LoggingAspect {
 	public void loggingAdviceForL3AfterCall() {
 		System.out.println("Advice run after all cache get method called using pointcut");
 	}
+	
+	@After("allCacheMethods()")
+	public void loggingAdviceForAllMethods() {
+		System.out.println("using All method pointcut");
+	}
 	// Using pointcut for same expression to be applied over different execution methods
 	@Pointcut("execution(public String com.compx.Cache.get*())")
 	public void afterAllGetters() { }
+	
+	// Pointcut for all methods of Cache
+	@Pointcut("within(com.compx.Cache)")
+	public void allCacheMethods() { }
 	
 }
