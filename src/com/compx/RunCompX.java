@@ -3,6 +3,8 @@ package com.compx;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.compx.service.FactoryService;
+
 public class RunCompX {
 
 	public static void main(String[] args) {
@@ -59,6 +61,12 @@ public class RunCompX {
 		System.out.println("Cache object : " + intelProc.getCache());
 		System.out.println("********* Getting welcome message for working *********");
 		System.out.println(context.getMessage("working", null, "Default working note", null));
+		
+		// Implementing own FactoryService to initialize and provide beans.
+		FactoryService factoryService = new FactoryService();
+		ryzenProc = (RyzenProcessor) factoryService.getBean("RyzenProcessor");
+		ryzenProc.setName("Ryzen 3200g");
+		System.out.println("Name : " + ryzenProc.getName());
 		
 		// for automatic/graceful application context closure when JVM ends
 		context.registerShutdownHook();

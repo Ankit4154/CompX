@@ -57,4 +57,9 @@ public class LoggingAspect {
 		}
 		System.out.println("After advice");
 	}
+	
+	// A normal method for AOP Proxy call
+	public void beforeAdvice() {
+		System.out.println("Before advice called");
+	}
 }
